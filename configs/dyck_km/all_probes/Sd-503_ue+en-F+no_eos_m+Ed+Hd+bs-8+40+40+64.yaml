@@ -1,0 +1,27 @@
+data:
+  dataset_name: dyck82
+  dataset_type: dyckkm_ending
+  dev_path: data/dyck_mk/dyck_8_2/no_eos/dev.formal.txt
+  test_path: data/dyck_mk/dyck_8_2/eos/test.formal.txt
+  train_path: data/dyck_mk/dyck_8_2/no_eos/train.formal.txt
+  vocab_path: data/dyck_mk/dyck_8_2/vocab.json
+lm:
+  batch_size: 64
+  cell_type: standard
+  dropout: 0.0
+  embed_dim: 40
+  hidden_dim: 40
+  lm_path: models/dyck82-no_eos
+  lm_type: rnnlm
+  lr: 0.01
+  num_layers: 1
+  seed: 503
+  use_eos: false
+reporter:
+  methods:
+  - dyck_ending
+  results_path: results/dyck82-no_eos
+truncation:
+  lr: 0.01
+  model_path: models/truncation/dyck82-no_eos
+  model_type: dyckkm_ending

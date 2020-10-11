@@ -1,0 +1,21 @@
+corpus:
+  dev_override_path: data/dyck_mk/dyck_4_2/eos/dev.formal.txt 
+  root: data/dyck_km
+  test_override_path: data/dyck_mk/dyck_4_2/eos/test.formal.txt 
+  train_override_path: data/dyck_mk/dyck_4_2/eos/train.formal.txt 
+language:
+  bracket_types: 2
+  dev_max_length: 116
+  dev_max_stack_depth: 4
+  dev_min_length: 88
+  dev_sample_count: 4
+  test_max_length: 1050
+  test_max_stack_depth: 4
+  test_min_length: 950
+  test_sample_count: 10
+  train_max_length: 116
+  train_max_stack_depth: 4
+  train_min_length: 88
+  train_sample_count: 10
+training:
+  seed: 500

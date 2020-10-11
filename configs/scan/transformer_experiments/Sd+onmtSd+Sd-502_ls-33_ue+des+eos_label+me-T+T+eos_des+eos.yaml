@@ -1,0 +1,69 @@
+data:
+  dataset_name: scanls33
+  dataset_type: scan
+  dev_path: data/scan/length_33_split/dev.txt
+  input_vocab_path: data/scan/scan_input_vocab.json
+  target_vocab_path: data/scan/scan_target_vocab.json
+  test_path: data/scan/length_33_split/tasks_test_length.txt
+  train_path: data/scan/length_33_split/small_train.txt
+lm:
+  batch_size: 1
+  dev_output_path: results/onmt_scan_results/ls33s502/eos_des/dev.txt
+  disable_eos_sampling: true
+  lm_path: models/
+  lm_type: s2s_lookup
+  seed: 502
+  test_output_path: results/onmt_scan_results/ls33s502/eos_des/long.txt
+  use_eos: true
+onmt:
+  preprocessing:
+    data_dir: data/scan/length_33_split/onmt
+    dev_src: dev.txt.src
+    dev_tgt: dev.txt.tgt
+    train_src: small_train.txt.src
+    train_tgt: small_train.txt.tgt
+  training:
+    accum_count: 2
+    adam_beta2: 0.998
+    batch_size: 128
+    batch_type: tokens
+    decay_method: noam
+    decoder_type: transformer
+    dropout: 0.1
+    encoder_type: transformer
+    gpu_ranks: 0
+    heads: 8
+    keep_checkpoint: 2
+    layers: 2
+    learning_rate: 2
+    max_generator_batches: 2
+    max_grad_norm: 0
+    normalization: tokens
+    optim: adam
+    param_init: 0
+    param_init_glorot: true
+    position_encoding: true
+    rnn_size: 128
+    save_checkpoint_steps: 10000
+    save_model: models/onmt_scan_models/ls33s502/eos/
+    seed: 502
+    train_steps: 100000
+    transformer_ff: 1024
+    valid_steps: 10000
+    warmup_steps: 8000
+    word_vec_size: 128
+    world_size: 1
+  translate:
+    beam_size: 1
+    dev_src: dev.txt.src
+    gpu: 0
+    model: _step_100000.pt
+    test_src: tasks_test_length.txt.src
+reporter:
+  methods:
+  - exact_match
+  - oracle_eos
+  results_path: results/onmt_scan_results/ls33s502/eos_des/
+truncation:
+  model_path: models/
+  model_type: oracle

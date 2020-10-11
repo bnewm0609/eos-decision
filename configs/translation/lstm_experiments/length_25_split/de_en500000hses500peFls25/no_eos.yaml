@@ -1,0 +1,47 @@
+data:
+  dataset_name: mt_deennp500000ls25
+  dataset_type: mt
+  dev_path: data/translation/de_en/subsampled_500000/length_25_split/dev.txt
+  input_vocab_path: data/translation/de_en/subsampled_500000/length_25_split/de_vocab.json
+  source_lang: de
+  target_lang: en
+  target_vocab_path: data/translation/de_en/subsampled_500000/length_25_split/en_vocab.json
+  test_path: data/translation/de_en/subsampled_500000/length_25_split/tasks_test_length.txt
+  train_path: data/translation/de_en/subsampled_500000/length_25_split/small_train.txt
+lm:
+  batch_size: 1
+  dev_output_path: results/onmt_results/de_en500000hses500peFls25/no_eos/dev.txt
+  disable_eos_sampling: false
+  lm_path: models/
+  lm_type: s2s_lookup
+  seed: 450
+  test_output_path: results/onmt_results/de_en500000hses500peFls25/no_eos/long.txt
+  use_eos: false
+onmt:
+  preprocessing:
+    data_dir: data/translation/de_en/subsampled_500000/length_25_split
+    dev_src: dev_de.txt
+    dev_tgt: dev_en.txt
+    train_src: small_train_de.txt
+    train_tgt: small_train_en.txt
+  training:
+    keep_checkpoint: 2
+    gpu_ranks: 0
+    position_encoding: false
+    rnn_size: 500
+    save_model: models/onmt_models/de_en500000hses500peFls25/no_eos/
+    word_vec_size: 500
+    world_size: 1
+  translate:
+    beam_size: 1
+    dev_src: dev_de.txt
+    gpu: 0
+    model: _step_100000.pt
+    test_src: tasks_test_length_de.txt
+reporter:
+  methods:
+  - oracle_bleu
+  results_path: results/onmt_results/de_en500000hses500peFls25/no_eos
+truncation:
+  model_path: models/
+  model_type: oracle

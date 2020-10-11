@@ -1,0 +1,38 @@
+data:
+  dataset_name: scanls25
+  dataset_type: scan
+  dev_path: data/scan/length_25_split/dev.txt
+  input_vocab_path: data/scan/scan_input_vocab.json
+  target_vocab_path: data/scan/scan_target_vocab.json
+  test_path: data/scan/length_25_split/tasks_test_length.txt
+  train_path: data/scan/length_25_split/small_train.txt
+input_cache:
+  use_cache: false
+lm:
+  batch_size: 16
+  decoder_cell_type: standard
+  decoder_num_layers: 1
+  dropout: 0.5
+  embed_dim: 200
+  encoder_cell_type: standard
+  encoder_num_layers: 2
+  hidden_dim: 200
+  lm_path: models/ls-25_eos-True
+  lm_type: seq2seq
+  lr: 0.001
+  seed: 501
+  teacher_forcing_ratio: 0.5
+  use_eos: true
+reporter:
+  methods:
+  - exact_match
+  - truncated_match
+  - oracle_eos
+  results_path: results/ls-25_eos-True
+target_cache:
+  calculate_neighbors: false
+  use_cache: false
+truncation:
+  model_path: models/
+  model_type: oracle
+  truncation_path: models/ls-25_eos-True

@@ -1,0 +1,27 @@
+data:
+  dataset_name: dyck62
+  dataset_type: dyckkm_ending
+  dev_path: data/dyck_mk/dyck_6_2/eos/dev.formal.txt
+  test_path: data/dyck_mk/dyck_6_2/eos/test.formal.txt
+  train_path: data/dyck_mk/dyck_6_2/eos/train.formal.txt
+  vocab_path: data/dyck_mk/dyck_6_2/vocab.json
+lm:
+  batch_size: 32
+  cell_type: standard
+  dropout: 0.0
+  embed_dim: 30
+  hidden_dim: 30
+  lm_path: models/dyck62-eos
+  lm_type: rnnlm
+  lr: 0.01
+  num_layers: 1
+  seed: 500
+  use_eos: true
+reporter:
+  methods:
+  - dyck_ending
+  results_path: results/dyck62-eos
+truncation:
+  lr: 0.01
+  model_path: models/truncation/dyck62-eos
+  model_type: dyckkm_ending
