@@ -420,7 +420,8 @@ class Seq2SeqSamplesReporter(Reporter):
 
 standard_reporter_lookup = {
         'perplexity': PerplexityReporter,
-        'close_bracket': CloseBracketReporter, # for Dyck-m,k
+        'close_bracket': CloseBracketReporter, # for Dyck-k,m
+        'dyck_ending': DyckEndingReporter, # for Dyck-k,m
         }
 
 sampling_reporter_lookup = {

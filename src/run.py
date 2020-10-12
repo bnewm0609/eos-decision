@@ -21,6 +21,7 @@ import utils
 # Mapping from data.dataset_type to dataset class
 dataset_lookup = {
     "dyckmk": Dataset,
+    "dyckkm_ending": DatasetDyckEnding,
     "scan": DatasetSCAN,
     "mt": DatasetMT,
 }
