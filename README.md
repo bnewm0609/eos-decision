@@ -1,6 +1,10 @@
 # eos-decision
 
+![Image of hidden state length manifolds in +EOS models vs -EOS models](length_manifolds.jpg)
+
 Current neural models are unable to generalize to sequences longer than those seen at training time, which is a barrier to achieving human-like language understanding. This problem is compounded by the widespread practice of using an end-of-sequence (`[EOS]`) token to mark the end of a training sequence. When these tokens are removed, models show a surprising ability to generalize to longer sequences in a number of domains. This repository contains experiments for investigating this phenomenon in three different settings.
+
+The publication is available [here](https://nlp.stanford.edu/pubs/newman2020extrapolation.pdf).
 
 
 ## Installing
@@ -327,3 +331,13 @@ Here are the possible evaluation metrics that can be listed in the `methods` cat
 If there are any other fields in the yaml file, they are not needed. You can see examples of configs in the `configs` directory.
 
 # Citation
+```
+@inproceedings{newman2020extrapolation,
+ author = {Benjamin Newman and John Hewitt and Percy Liang and Christopher D. Manning},
+ booktitle = {BlackBoxNLP@EMNLP},
+ link = {https://nlp.stanford.edu/pubs/newman2020extrapolation.pdf},
+ title = {The EOS Decision and Length Extrapolation},
+ url = {https://nlp.stanford.edu/pubs/newman2020extrapolation.pdf},
+ year = {2020}
+}
+```
