@@ -34,7 +34,7 @@ python setup.py install
 * results: Is created when models are trained to store experiment results.
 * src: Stores the code for running an experiment from a config file.
 * scripts: Stores an assortment of scripts for running groups of experiments, generating and preprocessing data and generating results.
-* tools/shared: Tokenization tools for the MT experiments. From http://www.statmt.org/europarl/v7/tools.tgz.
+* tools/shared: Tokenization tools for the MT experiments written by by Philipp Koehn and Josh Schroeder. (Available at http://www.statmt.org/europarl/v7/tools.tgz)
 
 
 ## Running Dyck-(k,m) experiments
@@ -117,6 +117,7 @@ To download and preprocess the data, run
 sh scripts/translation/generate_data.sh
 ```
 This will download the Europarl German-English training set from http://www.statmt.org/europarl/v9/training/, sample 500,000 examples, and partition it into a the length splits with length cutoffs of `10`, `15`, and `25` tokens.
+
 
 ### 2. Running the Experiments
 Both the Transformer and LSTM experiments are conducted using OpenNMT, so there are three commands to run them all.
