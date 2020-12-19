@@ -79,29 +79,29 @@ Unlike the Dyck-(k,m) data, the SCAN data is already included in the repo.
 ### 1. Running Experiments
 To run the LSTM experiments, run:
 ```bash
-python scripts/shared/run_all.py configs/scan/lstm-experiments train-seq2seq
+python scripts/shared/run_all.py configs/scan/lstm_experiments train-seq2seq
 ```
 
 As long as the OpenNMT submodule is installed, the transformer experiments are almost as easy. First, train the -EOS and +EOS models:
 ```bash
-python scripts/shared/run_all.py configs/scan/transformer-experiments train-onmt --black_list "+eos_des+"
+python scripts/shared/run_all.py configs/scan/transformer_experiments train-onmt --black_list "+eos_des+"
 ```
 This command also generates the outputs for the +EOS model and the -EOS+Oracle model.
 
 To generate the output for the +EOS+Oracle model, run this command:
 ```bash
-python scripts/shared/run_all.py configs/scan/transformer-experiments generate-onmt --white_list "+eos_des+"
+python scripts/shared/run_all.py configs/scan/transformer_experiments generate-onmt --white_list "+eos_des+"
 ```
 
 At this point, the transformer-generated outputs are saved to disk, so we have to run the evaluations for them. We can run the oracle length evaluation with the BLEU metric with the command:
 ```bash
-python scripts/shared/run_all.py configs/scan/transformer-experiments eval
+python scripts/shared/run_all.py configs/scan/transformer_experiments eval
 ```
 
 ### 2. Results and Plots:
 To generate the SCAN result tables in the paper, run:
 ```bash
-python scripts/scan/collect_results.py configs/scan/{lstm,transformer}-experiments
+python scripts/scan/collect_results.py configs/scan/{lstm,transformer}_experiments
 ```
 To get the lstm or transformer results respectively.
 
@@ -124,17 +124,17 @@ Both the Transformer and LSTM experiments are conducted using OpenNMT, so there 
 
 First, to train the -EOS and +EOS models and capture their generations:
 ```bash
-python scripts/shared/run_all.py configs/translation/{lstm,transformer}-experiments train-onmt --black_list "+eos_des+"
+python scripts/shared/run_all.py configs/translation/{lstm,transformer}_experiments train-onmt --black_list "+eos_des+"
 ```
 
 Next, to capture the generated sequences from the +EOS+Oracle models:
 ```bash
-python scripts/shared/run_all.py configs/translation/{lstm,transformer}-experiments generate-onmt --white_list "+eos_des+"
+python scripts/shared/run_all.py configs/translation/{lstm,transformer}_experiments generate-onmt --white_list "+eos_des+"
 ```
 
 Finally, to evaluate using our the Oracle BLEU metric, run:
 ```bash
-python scripts/shared/run_all.py configs/translation/{lstm,transformer}-experiments eval
+python scripts/shared/run_all.py configs/translation/{lstm,transformer}_experiments eval
 ```
 
 
